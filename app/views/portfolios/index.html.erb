@@ -9,6 +9,7 @@
     <h3><%= item.title %></h3>
     <p><%= item.subtitle %></p>
     <p><%= item.body %></p>
-    <%= image_tag item.thumb_image %>
+    <%= image_tag item.thumb_image unless item.thumb_image.nil? %>   <%# better way of doing this%>
+    <%# So it says that jab hmara image nill na ho to tab usse show karo if nil to rahne do ->  as unless only work jab condition false rahegi%>
   </div>
 <% end %>
