@@ -5,6 +5,10 @@ class PortfoliosController < ApplicationController
     @portfolio_items = Portfolio.all
     @plural_table_name = Portfolio.model_name.human(count: :many) # to use in view
   end
+  def angular
+    @angular_portfolio_items = Portfolio.angular
+    @plural_table_name = Portfolio.model_name.human(count: :many) # to use in view
+  end
 
   def new
     @portfolio_item = Portfolio.new
