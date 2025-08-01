@@ -1,0 +1,19 @@
+<h2><%= @plural_table_name %></h2>
+
+<p id="notice"><%= notice %></p>
+<h3><%= link_to "Create New Record " , new_portfolio_path%></h3>
+
+<hr>
+
+<% @portfolio_items.each do |item| %>
+  <div>
+    <h3><%= item.title %></h3>
+    <p><%= item.subtitle %></p>
+    <p><%= item.body %></p>
+    <%= image_tag item.thumb_image unless item.thumb_image.nil? %>   <%# better way of doing this%>
+    <%# So it says that jab hmara image nill na ho to tab usse show karo if nil to rahne do ->  as unless only work jab condition false rahegi%>
+    <%= link_to "Show", portfolio_show_path(item.id) %>
+    <%= link_to "Edit" , edit_portfolio_path(item) %>
+    <%= button_to "Delete", portfolio_path(item), method: :delete, data: { confirm: "Are you sure?" }, form: { "data-turbo" => "false" } %>
+  </div>
+<% end %>
