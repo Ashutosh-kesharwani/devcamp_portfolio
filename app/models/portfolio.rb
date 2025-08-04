@@ -1,7 +1,21 @@
 class Portfolio < ApplicationRecord
   # One to many Association
-   has_many :technologies
+  has_many :technologies
+
+  #this function says that in a portfolio form accept attr for technology child model only if its attr name is not null if blank than reject it
+  accepts_nested_attributes_for :technologies,
+                                reject_if: lambda { |attrs| attrs['name'].blank?} 
+
+  # This helps in creating nested attr from parent model 
+  # Portfolio.create!(title:'Web Apps',subtitle:'asdfedd',body:'asdfedd',technologies_attributes:[{name:'Ruby'},{name:'Rails'},{name:'Angular'},{name:'Iconic'}])
+  #Note: -> yha pe jo child model ka plural name hoga and _attributes uske aage likha hoga 
+  #Note: -> yha pe [] ka matlab jo nested attr hai array ke form me pass honge and {} ek curly braces me ek object pass hoga  
+
+  #Using Model Concerns
   include Placeholder
+
+
+  #Validations in Model
   validates :title ,:body ,:main_image,:thumb_image, presence: true 
   
   # This method will target an indiviual portfolio object as self lga hai , which is for class method
