@@ -1,4 +1,6 @@
 class Portfolio < ApplicationRecord
+  
+  include Placeholder
   validates :title ,:body ,:main_image,:thumb_image, presence: true 
   
   # This method will target an indiviual portfolio object as self lga hai , which is for class method
@@ -17,7 +19,7 @@ class Portfolio < ApplicationRecord
    def set_defaults
     # This self is reference to a new portfolio item that we create with form
     # ||= this is an shortcut for if self.main_image=nil than set it with  default value otherwise not change the existing value
-    self.main_image ||= "https://placeholdit.com/600x400/dddddd/999999"
-    self.thumb_image ||= "https://placeholdit.com/350x200/dddddd/999999" 
+    self.main_image ||= Placeholder.image_generator(height:'600',width: '400')
+    self.thumb_image ||=  Placeholder.image_generator(height:'350',width: '200')
    end
 end
