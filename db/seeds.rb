@@ -36,7 +36,7 @@ puts "5 Skills  created"
    thumb_image:"https://placeholdit.com/350x200/dddddd/999999" 
   )
 end
-puts "8 Portfolios Created created"
+puts "8 Portfolios Created "
 
 1.times do |x|
   Portfolio.create!(
@@ -49,7 +49,23 @@ puts "8 Portfolios Created created"
    thumb_image:"https://placeholdit.com/350x200/dddddd/999999" 
   )
 end
-puts "1 Portfolios Created created"
+puts "1 Portfolios Created"
+
+
+3.times do |x|
+    Technology.create!(
+      name: "Technology :#{x+1}",
+      portfolio_id: Portfolio.last.id
+      )
+end
+puts "3 technologies Created"
+
+# ANOTHER WAYS OF ADDING VALUES IN ASSOCIATION MDOELS
+#Define a parent obj or choose it 
+# p= Portfolio.last
+# than create a child object directly associated with it
+# p.technologies.create!(name"Random.name") here we don't have to explicitly pass the parent id as well already mention it in advance
+
 
 # At end use rails db:setup to delete previous data , create new object , load schema and run seed data 
 # i.e runs -> rails db:create , rails db:schema:load, rails db:seed
