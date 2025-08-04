@@ -5,9 +5,16 @@ class PortfoliosController < ApplicationController
     @portfolio_items = Portfolio.all
     @plural_table_name = Portfolio.model_name.human(count: :many) # to use in view
   end
+  def angular
+    @angular_portfolio_items = Portfolio.angular
+    @plural_table_name = Portfolio.model_name.human(count: :many) # to use in view
+  end
 
   def new
     @portfolio_item = Portfolio.new
+    #Hardcoded version of creating child item from the paremt
+    #Iska matlab for each new portfolio obj create 3 technology obj associated with it 
+    3.times {@portfolio_item.technologies.build} 
   end
 
   def create
@@ -43,7 +50,7 @@ class PortfoliosController < ApplicationController
   private
 
   def portfolio_params
-    params.require(:portfolio).permit(:title, :subtitle, :body, :main_image, :thumb_image)
+    params.require(:portfolio).permit(:title, :subtitle, :body, :main_image, :thumb_image,technologies_attributes: [:name]) #making child attr as a strong params
   end
 
   def set_portfolio
