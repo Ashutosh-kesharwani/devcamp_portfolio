@@ -11,6 +11,20 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if current_user %>
+      <%= form_with url: destroy_user_session_path, method: :delete do %>
+        <%= submit_tag "Logout" %>
+      <% end %>
+    <% else %>
+      <%= link_to "Register", new_user_registration_path %>
+      <%= link_to "LogIn", new_user_session_path %>
+    <% end %>
+
     <%= yield %>
+
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </body>
 </html>
