@@ -6,6 +6,11 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%# Note : Autofocus true se matlab browser page khulte hi email field par cursor aayega %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autocomplete: "name" %>
   </div>
 
   <div class="field">
