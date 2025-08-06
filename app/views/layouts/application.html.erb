@@ -24,7 +24,9 @@
     <% end %>
 
     <%= yield %>
-
+     <%if session[:source]%>
+      <p>Thanks for visiting me from <%= session[:source]%></p>
+     <% end %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </body>
 </html>
