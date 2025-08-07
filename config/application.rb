@@ -15,13 +15,9 @@ module DevcampPortfolio
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
-
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    #This means that all the files in the lib directory will be loaded automatically
+    #and we don't have to require them manually in the application and use permit method to make them availiable in controllers
+    # config.action_controller.permit_all_parameters = true
+    # most of time we turn it off that is on false for security reason 
   end
 end
