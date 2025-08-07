@@ -43,6 +43,7 @@ class PortfoliosController < ApplicationController
   end
 
   def destroy
+    # binding.b Same as byebug
     @portfolio_item.destroy
     redirect_to portfolios_path, notice: "Portfolio is deleted"
   end
