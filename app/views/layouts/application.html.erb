@@ -14,7 +14,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <% if current_user %>
+    <% if current_user.is_a?(User) %>
       <%= form_with url: destroy_user_session_path, method: :delete do %>
         <%= submit_tag "Logout" %>
       <% end %>
@@ -24,7 +24,9 @@
     <% end %>
 
     <%= yield %>
-
+     <%if session[:source]%>
+      <p>Thanks for visiting me from <%= session[:source]%></p>
+     <% end %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </body>
 </html>

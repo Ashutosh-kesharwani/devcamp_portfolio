@@ -43,14 +43,26 @@ class PortfoliosController < ApplicationController
   end
 
   def destroy
+    # binding.b Same as byebug
     @portfolio_item.destroy
     redirect_to portfolios_path, notice: "Portfolio is deleted"
   end
 
   private
-
+ 
+  #Strong params are used to prevent mass assignment vulnerabilities
+  #Strong params are used to specify which parameters are allowed to be used in the model
+  #i.e y using permit method
+  #Strong params are used to prevent unwanted parameters from being passed to the model 
+  #and permit tell that which parameters are allowed to be used in the model and in form and different section in views and which not
   def portfolio_params
-    params.require(:portfolio).permit(:title, :subtitle, :body, :main_image, :thumb_image,technologies_attributes: [:name]) #making child attr as a strong params
+    # here in application.rb of config we have uese config.action_controller.permit_all_parameters = true
+    params.require(:portfolio).permit(:title,
+                                       :subtitle, 
+                                        :body,
+                                         :main_image, 
+                                         :thumb_image,
+                                         technologies_attributes: [:name]) #making child attr as a strong params
   end
 
   def set_portfolio
