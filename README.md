@@ -3,7 +3,7 @@
 - Blog
 - Portfolio
 
-## Code examples
+## Code example
 
 ```ruby
 def print_text
